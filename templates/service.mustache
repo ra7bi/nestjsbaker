@@ -1,0 +1,36 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { {{entityName}} } from './{{entityNameLowercase}}.entity';
+import { {{createDtoName}} } from './dto/create-{{tableName}}.dto';
+import { {{updateDtoName}} } from './dto/update-{{tableName}}.dto';
+
+@Injectable()
+export class {{serviceName}} {
+  constructor(
+    @InjectRepository({{entityName}})
+    private {{entityNameLowercase}}Repository: Repository<{{entityName}}>,
+  ) {}
+
+  create{{entityName}}({{createDtoInstanceName}}: {{createDtoName}}): Promise<{{entityName}}> {
+    const {{entityNameLowercase}} = this.{{entityNameLowercase}}Repository.create({{createDtoInstanceName}});
+    return this.{{entityNameLowercase}}Repository.save({{entityNameLowercase}});
+  }
+
+  findAll{{entityName}}(): Promise<{{entityName}}[]> {
+    return this.{{entityNameLowercase}}Repository.find();
+  }
+
+  find{{entityName}}(id: number): Promise<{{entityName}}> {
+    return this.{{entityNameLowercase}}Repository.findOne({ where: { id } });
+  }
+
+  async update{{entityName}}(id: number, {{updateDtoInstanceName}}: {{updateDtoName}}): Promise<{{entityName}}> {
+    await this.{{entityNameLowercase}}Repository.update(id, {{updateDtoInstanceName}});
+    return this.{{entityNameLowercase}}Repository.findOne({ where: { id } });
+  }
+
+  async remove{{entityName}}(id: number): Promise<void> {
+    await this.{{entityNameLowercase}}Repository.delete(id);
+  }
+}

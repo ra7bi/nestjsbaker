@@ -1,0 +1,25 @@
+{
+  "name": "baker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "baker-cli.js",
+  "type": "module",
+  "scripts": {
+    "baker": "node baker-cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^10.0.4",
+    "mustache": "^4.2.0",
+    "mysql2": "^3.10.3",
+    "ora": "^8.0.1",
+    "pg": "^8.12.0",
+    "pluralize": "^8.0.0",
+    "typeorm": "^0.3.20"
+  }
+}

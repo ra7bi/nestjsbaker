@@ -1,0 +1,54 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { {{serviceName}} } from './{{tableName}}.service';
+import { {{createDtoName}} } from './dto/create-{{tableName}}.dto';
+import { {{updateDtoName}} } from './dto/update-{{tableName}}.dto';
+
+/**
+ * Whatever the string passed in the controller decorator, it will be appended to
+ * the API URL. To call any API from this controller, you need to add this prefix.
+ * In our case, the base URL will be http://localhost:3000/{{tableName}}
+ */
+@Controller('{{tableName}}')
+export class {{controllerName}} {
+  constructor(private readonly {{serviceInstanceName}}: {{serviceName}}) {}
+
+  /**
+   * POST http://localhost:3000/{{tableName}}
+   */
+  @Post()
+  create(@Body() {{createDtoInstanceName}}: {{createDtoName}}) {
+    return this.{{serviceInstanceName}}.create{{entityName}}({{createDtoInstanceName}});
+  }
+
+  /**
+   * GET http://localhost:3000/{{tableName}}
+   */
+  @Get()
+  findAll() {
+    return this.{{serviceInstanceName}}.findAll{{entityName}}();
+  }
+
+  /**
+   * GET http://localhost:3000/{{tableName}}/:id
+   */
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.{{serviceInstanceName}}.find{{entityName}}(+id);
+  }
+
+  /**
+   * PATCH http://localhost:3000/{{tableName}}/:id
+   */
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() {{updateDtoInstanceName}}: {{updateDtoName}}) {
+    return this.{{serviceInstanceName}}.update{{entityName}}(+id, {{updateDtoInstanceName}});
+  }
+
+  /**
+   * DELETE http://localhost:3000/{{tableName}}/:id
+   */
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.{{serviceInstanceName}}.remove{{entityName}}(+id);
+  }
+}

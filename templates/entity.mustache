@@ -1,0 +1,36 @@
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+{{#inferredRelationships}}
+import { {{foreignEntityName}} } from '../{{foreignTableNameSingular}}/{{foreignEntityFileName}}.entity';
+{{/inferredRelationships}}
+{{#oneToManyRelationships}}
+import { {{foreignEntityName}} } from '../{{foreignTableNameSingular}}/{{foreignEntityFileName}}.entity';
+{{/oneToManyRelationships}}
+
+@Entity('{{tableName}}')
+export class {{entityName}} {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  {{#columns}}
+  {{^isPrimary}}
+  {{^isForeignKey}}
+  @Column({{#columnOptions}}{ {{name}}: {{{value}}} }{{/columnOptions}})
+  {{propertyName}}: {{ts_type}};
+  {{/isForeignKey}}
+  {{/isPrimary}}
+  {{/columns}}
+
+  {{#inferredRelationships}}
+  @Column({ name: '{{column_name}}' })
+  {{columnPropertyName}}: number;
+
+  @ManyToOne(() => {{foreignEntityName}}, ({{foreignEntityName}}) => {{foreignEntityName}}.{{tableName}})
+  @JoinColumn({ name: '{{column_name}}' })
+  {{relationPropertyName}}: {{foreignEntityName}};
+  {{/inferredRelationships}}
+
+  {{#oneToManyRelationships}}
+  @OneToMany(() => {{foreignEntityName}}, ({{foreignEntityName}}) => {{foreignEntityName}}.{{relationPropertyName}})
+  {{foreign_table_name}}: {{foreignEntityName}}[];
+  {{/oneToManyRelationships}}
+}
