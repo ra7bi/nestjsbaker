@@ -32,3 +32,6 @@ Think of it as `bake` command's cool, TypeScript-loving cousin. It's here to mak
 
 
 
+## After baker 
+
+![image](https://github.com/user-attachments/assets/40e03029-41ba-423a-9363-7f86a6a0a0e0)
