@@ -10,7 +10,7 @@ async function main() {
   const spinner = ora('Initializing Baker CLI...').start();
 
   try {
-    spinner.succeed('Baker CLI initialized');
+    spinner.succeed('NestJS Baker , From DB -> Nestjs server & Vue.js UI  ');
 
     const { action } = await inquirer.prompt([
       {
@@ -20,7 +20,7 @@ async function main() {
         choices: [
           { name: 'Generate Entities', value: 'entities' },
           { name: 'Generate NestJS Components', value: 'components' },
-          { name: 'Generate Vue.js Frontend', value: 'vue' }, // New option
+          { name: 'Generate Vue.js dashboard from an existing Nestjs project or ORM DB ', value: 'vue' }, // New option
           { name: 'Generate Both Backend Components', value: 'both' },
           { name: 'Generate Full Stack (Backend + Frontend)', value: 'fullstack' }, // New option
         ],
