@@ -33,6 +33,10 @@ Think of it as `bake` command's cool, TypeScript-loving cousin. It's here to mak
 
 ![image](https://github.com/user-attachments/assets/e77b3b69-5e19-42a6-abe8-032ddcaa40af)
 
+## Auto Generated Dashboard THIS IS BETA 
+
+
+![image](https://github.com/user-attachments/assets/02c2cdbd-b3a5-4261-a283-61a6db15b575)
 
 
 ## After baker 
