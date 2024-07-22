@@ -12,7 +12,7 @@ Think of it as `bake` command's cool, TypeScript-loving cousin. It's here to mak
 - 🎮 Builds controllers with CRUD operations so smooth, they're basically the butter cream of your API layer
 - 🔧 Produces services with basic CRUD functionality - it's like a Swiss Army knife, but for your database
 - 📊 Provides a clear summary of your database schema, because sometimes we all need a little reminder of what we've created
-
+- 🏗️ Generates Vue.js dashboard from an exisitng database or nestjs project (BETA) 
 
 
 ![image](https://github.com/user-attachments/assets/904897a4-8a14-433d-9f6f-e2fe41bc05eb)
