@@ -39,7 +39,7 @@ async function generateNestComponents() {
   const serviceTemplate = await fs.readFile('templates/service.mustache', 'utf-8');
 
   // Get the base output directory from .env
-  const baseOutputDir = process.env.OUTPUT_DIR || 'output';
+  const baseOutputDir = process.env.BACKEND_DIR || 'output';
 
   for (const tableName in schema) {
     if (!schema.hasOwnProperty(tableName)) continue;

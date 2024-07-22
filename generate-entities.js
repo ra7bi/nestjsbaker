@@ -27,7 +27,7 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Get the output directory from .env, with a fallback
-const outputDir = process.env.OUTPUT_DIR || path.join(__dirname, '..', 'output');
+const outputDir = process.env.BACKEND_DIR || path.join(__dirname, '..', 'output');
 
 
 
