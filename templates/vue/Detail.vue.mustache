@@ -1,0 +1,102 @@
+<template>
+  <div class="{{componentName}}Detail">
+    <h1 class="detail-title">{{componentName}} Detail</h1>
+    <ul class="detail-list">
+      {{#fields}}
+      <li class="detail-item"><strong>{{label}}:</strong> {{{vueBinding}}}</li>
+      {{/fields}}
+    </ul>
+    <div class="button-group">
+      <button class="btn btn-primary" @click="editItem">Edit</button>
+      <button class="btn btn-danger" @click="deleteItem">Delete</button>
+      <button class="btn btn-secondary" @click="goBack">Back</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { get{{componentName}}, delete{{componentName}} } from '@/api/{{tableName}}Api';
+
+export default {
+  name: '{{componentName}}Detail',
+  data() {
+    return {
+      item: {}
+    };
+  },
+  async created() {
+    const id = this.$route.params.id;
+    this.item = await get{{componentName}}(id);
+  },
+  methods: {
+    editItem() {
+      this.$router.push(`/{{tableName}}/${this.item.id}/edit`);
+    },
+    async deleteItem() {
+      await delete{{componentName}}(this.item.id);
+      this.$router.push(`/{{tableName}}`);
+    },
+    goBack() {
+      this.$router.push(`/{{tableName}}`);
+    }
+  }
+};
+</script>
+
+<style scoped>
+.detail-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ff7f50;
+}
+
+.detail-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.detail-item {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #1a202c;
+  border-color: #1a202c;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #e3342f;
+  border-color: #e3342f;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-danger:hover,
+.btn-secondary:hover {
+  opacity: 0.8;
+}
+</style>

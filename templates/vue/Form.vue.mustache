@@ -1,0 +1,55 @@
+<template>
+  <div class="{{componentName}}Form">
+    <h1>{{ isEditing ? 'Edit' : 'Create' }} {{componentName}}</h1>
+    <form @submit.prevent="submitForm">
+      {{#fields}}
+      <div>
+        <label for="{{name}}">{{label}}</label>
+        <input 
+          id="{{name}}" 
+          v-model="form.{{name}}" 
+          type="{{type}}"
+          required
+        >
+      </div>
+      {{/fields}}
+      <button type="submit">{{ isEditing ? 'Update' : 'Create' }}</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import { create{{componentName}}, update{{componentName}}, get{{componentName}} } from '@/api/{{tableName}}Api';
+
+export default {
+  name: '{{componentName}}Form',
+  data() {
+    return {
+      form: {
+        {{#fields}}
+        {{name}}: '',
+        {{/fields}}
+      },
+      isEditing: false
+    };
+  },
+  async created() {
+    const id = this.$route.params.id;
+    if (id) {
+      this.isEditing = true;
+      const item = await get{{componentName}}(id);
+      this.form = { ...item };
+    }
+  },
+  methods: {
+    async submitForm() {
+      if (this.isEditing) {
+        await update{{componentName}}(this.$route.params.id, this.form);
+      } else {
+        await create{{componentName}}(this.form);
+      }
+      this.$router.push('/{{tableName}}');
+    }
+  }
+};
+</script>

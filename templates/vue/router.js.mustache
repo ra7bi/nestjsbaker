@@ -1,0 +1,41 @@
+import { createRouter, createWebHistory } from 'vue-router';
+import AppLayout from './components/AppLayout.vue';
+{{#routes}}
+import {{name}}List from './components/{{name}}List.vue';
+import {{name}}Form from './components/{{name}}Form.vue';
+import {{name}}Detail from './components/{{name}}Detail.vue';
+{{/routes}}
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: AppLayout,
+    children: [
+      {{#routes}}
+      {
+        path: '{{route}}',
+        name: '{{name}}List',
+        component: {{name}}List
+      },
+      {
+        path: '{{route}}/new',
+        name: '{{name}}Form',
+        component: {{name}}Form
+      },
+      {
+        path: '{{route}}/:id',
+        name: '{{name}}Detail',
+        component: {{name}}Detail
+      },
+      {{/routes}}
+    ]
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+});
+
+export default router;

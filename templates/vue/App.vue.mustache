@@ -1,0 +1,28 @@
+<template>
+  <div id="app">
+    <nav>
+      {{#components}}
+      <router-link to="/{{route}}">{{name}}</router-link>
+      {{/components}}
+    </nav>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+#app {
+  font-family: Arial, sans-serif;
+}
+nav {
+  padding: 20px;
+}
+nav a {
+  margin-right: 10px;
+}
+</style>

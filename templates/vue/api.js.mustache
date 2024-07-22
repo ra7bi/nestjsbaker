@@ -1,0 +1,28 @@
+import axios from 'axios';
+
+const API_URL = process.env.VUE_APP_API_URL || 'http://localhost:3000';
+
+export const get{{componentName}}s = async () => {
+  const response = await axios.get(`${API_URL}/{{tableName}}`);
+  return response.data;
+};
+
+export const get{{componentName}} = async (id) => {
+  const response = await axios.get(`${API_URL}/{{tableName}}/${id}`);
+  return response.data;
+};
+
+export const create{{componentName}} = async (data) => {
+  const response = await axios.post(`${API_URL}/{{tableName}}`, data);
+  return response.data;
+};
+
+export const update{{componentName}} = async (id, data) => {
+  const response = await axios.put(`${API_URL}/{{tableName}}/${id}`, data);
+  return response.data;
+};
+
+export const delete{{componentName}} = async (id) => {
+  const response = await axios.delete(`${API_URL}/{{tableName}}/${id}`);
+  return response.data;
+};
