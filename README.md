@@ -14,6 +14,9 @@ Think of it as `bake` command's cool, TypeScript-loving cousin. It's here to mak
 - 📊 Provides a clear summary of your database schema, because sometimes we all need a little reminder of what we've created
 - 🏗️ Generates Vue.js dashboard from an exisitng database or nestjs project (BETA) 
 
+![image](https://github.com/user-attachments/assets/f65174f6-386c-4cd5-bee3-484303ff7c67)
+
+
 
 ![image](https://github.com/user-attachments/assets/904897a4-8a14-433d-9f6f-e2fe41bc05eb)
 
